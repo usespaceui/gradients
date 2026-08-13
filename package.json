@@ -1,17 +1,32 @@
 {
   "name": "@usespaceui/gradients",
-  "version": "0.1.2",
-  "files": [
-    "dist"
-  ],
+  "version": "0.1.3",
   "description": "Stunning, programmatic mesh gradients and organic color palettes.",
+  "author": {
+    "name": "SpaceUI",
+    "email": "hello@spaceui.one",
+    "url": "https://www.spaceui.one"
+  },
+  "contributors": [
+    {
+      "name": "SpaceUI Team",
+      "email": "hello@spaceui.one",
+      "url": "https://www.spaceui.one"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/usespaceui"
+  },
+  "license": "MIT",
+  "homepage": "https://gradients.spaceui.one",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/usespaceui/gradients.git"
   },
-  "homepage": "https://gradients.spaceui.one",
   "bugs": {
-    "url": "https://github.com/usespaceui/gradients/issues"
+    "url": "https://github.com/usespaceui/gradients/issues",
+    "email": "hello@spaceui.one"
   },
   "keywords": [
     "react",
@@ -24,9 +39,16 @@
     "mesh",
     "deterministic"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -51,6 +73,5 @@
   "devDependencies": {
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
-  },
-  "license": "MIT"
+  }
 }
