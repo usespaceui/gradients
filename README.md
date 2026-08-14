@@ -103,8 +103,8 @@ console.log(palette.colors) // ['#bcd6ff', '#1f4fd8', '#0a1a4a', '#6073ff', '#59
 | Package                                                          | Description                                    |
 | ---------------------------------------------------------------- | ---------------------------------------------- |
 | [`@usespaceui/avatars`](https://github.com/usespaceui/avatars)   | Generative deterministic avatars               |
+| [`@usespaceui/sounds`](https://github.com/usespaceui/sounds)     | UI sound effects and audio interactions        |
 | [`@usespaceui/squircle`](https://github.com/usespaceui/squircle) | Figma-style corner smoothing (Apple squircles) |
-| [`@usespaceui/sounds`](https://github.com/usespaceui/sounds)     | Procedural Web Audio UI sound engine           |
 
 ---
 
