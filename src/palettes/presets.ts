@@ -1,30 +1,9 @@
-import { toSeed } from '../core/hash'
-import type { GradientPalette, PaletteOptions } from '../types'
-
-function normalizeHex(color: string): string | null {
-  const m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(color.trim())
-  if (!m) return null
-  let h = m[1]
-  if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2]
-  return `#${h.toUpperCase()}`
-}
-
-function normalizeColors(colors?: string[]): string[] | null {
-  if (!colors?.length) return null
-  const out: string[] = []
-  for (const c of colors) {
-    const h = normalizeHex(c)
-    if (h) out.push(h)
-  }
-  return out.length ? out : null
-}
-
-export interface GlobalPalette {
+export interface PresetPalette {
   name: string
   colors: string[]
 }
 
-export const GLOBAL_PALETTES: GlobalPalette[] = [
+export const PRESET_PALETTES: PresetPalette[] = [
   { name: 'Phosphophyllite', colors: ['#7cf0c4', '#3aa0ff', '#0f2f5c', '#1b6b4a', '#8ceaff'] },
   { name: 'Padparadscha', colors: ['#ff8f6b', '#ffd76b', '#6b4bff', '#ff8a0f', '#ffd9bd'] },
   { name: 'Morganite', colors: ['#ffb1e4', '#8f6bff', '#2a1450', '#ff5596', '#bdc0ff'] },
@@ -49,23 +28,3 @@ export const GLOBAL_PALETTES: GlobalPalette[] = [
   { name: 'Sapphire', colors: ['#4c6bff', '#1a2f9c', '#050a2e', '#7f9aff', '#2140c4'] },
   { name: 'Peridot', colors: ['#d4ff6b', '#8fbf1c', '#2a3d0a', '#e8ff9e', '#5c8f14'] },
 ]
-
-export function generatePalette(seed: number | string, options: PaletteOptions = {}): GradientPalette {
-  const s = toSeed(seed)
-  let custom = normalizeColors(options.colors)
-
-  if (custom) {
-    // Return the custom colors exactly as provided so the primary color (index 0) remains consistent across variants.
-    return { seed: s, colors: custom, harmony: 'custom' }
-  }
-
-  // Choose a palette deterministically from GLOBAL_PALETTES
-  const paletteIndex = s % GLOBAL_PALETTES.length
-  const basePalette = GLOBAL_PALETTES[paletteIndex].colors
-
-  // Shift colors based on seed for variety
-  const offset = s % basePalette.length
-  const colors = basePalette.map((_, i) => basePalette[(i + offset) % basePalette.length])
-
-  return { seed: s, colors, harmony: 'custom' }
-}

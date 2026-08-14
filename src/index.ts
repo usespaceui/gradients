@@ -1,2 +1,5 @@
-export * from './color/palette'
+export { BASE_COLORS } from './palettes/colors'
+export { PRESET_PALETTES } from './palettes/presets'
+export { NICE_PALETTES } from './palettes/nice'
+export { generatePalette } from './core/generate-palette'
 export * from './types'

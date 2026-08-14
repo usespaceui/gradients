@@ -82,19 +82,37 @@ Zero dependencies.
 ```ts
 import { generatePalette } from '@usespaceui/gradients'
 
-// Always generates the exact same harmonious 5-color palette for "Ada"
-const palette = generatePalette('Ada')
+// Generates a deterministic harmonious 5-color palette for "Space UI"
+const palette = generatePalette('Space UI')
 
 console.log(palette.colors) // ['#bcd6ff', '#1f4fd8', '#0a1a4a', '#6073ff', '#59adef']
+
+// Generate a random palette (auto-seeded)
+const randomPalette = generatePalette()
+
+// Force a specific generation mode
+const presetOnly = generatePalette('seed')
+const presetOnly = generatePalette('seed', { mode: 'presets' })
+const randomOnly = generatePalette('seed', { mode: 'random' })
+const niceOnly = generatePalette('seed', { mode: 'nice' })
+
+// Provide your own custom colors
+const customPalette = generatePalette('seed', { colors: ['#fff', '#000'] })
 ```
 
 ## 🧰 Utilities Included
 
-- `generatePalette(seed: number | string, options?: PaletteOptions): GradientPalette`
-  Takes a deterministic seed string or number and returns a beautiful, mathematically chosen 5-color palette.
+- `generatePalette(seed?: number | string, options?: PaletteOptions): GradientPalette`
+  Takes an optional seed string or number and returns a deterministic or random 5-color palette. Options allow you to specify the generation `mode` (`'presets'`, `'random'`, or `'nice'`) or force `colors`.
 
-- `GLOBAL_PALETTES`
-  An array containing all the curated base palettes (e.g. _Phosphophyllite_, _Padparadscha_, _Morganite_, etc.) used by the procedural generator.
+- `PRESET_PALETTES`
+  An array containing all the curated Space UI custom palettes used in the `presets` generation mode.
+
+- `NICE_PALETTES`
+  An array of 200 beautiful palettes named after stars, imported from `nice-color-palettes` and used in the `nice` generation mode.
+
+- `BASE_COLORS`
+  An array containing all the individual beautiful base colors used in the `random` generation mode.
 
 ---
 
@@ -118,6 +136,12 @@ MIT — Free for commercial and personal use.
 
 - 🔍 [Explore the palettes & Playground](https://gradients.spaceui.one)
 - 🌍 [Space UI Official Site](https://www.spaceui.one)
+
+---
+
+## 👏 Credits
+
+- The `NICE_PALETTES` collection is powered by the amazing work from [nice-color-palettes](https://github.com/Experience-Monks/nice-color-palettes) by the Experience-Monks team (and sourced from ColourLovers). We are grateful for their beautiful curations!
 
 ---
 
